@@ -25,12 +25,10 @@ npm i -S moderator
 
 ## Team
 
-<center>
-[![Ray Benefield](http://gravatar.com/avatar/e931b13306ea1022549766266727f789?s=144)](https://github.com/RayBenefield)|
-:---:|
-[Ray Benefield](https://github.com/RayBenefield)|
-Solutions Architect|
-</center>
+|[![Ray Benefield](http://gravatar.com/avatar/e931b13306ea1022549766266727f789?s=144)](https://github.com/RayBenefield) |
+|:------------------------------------------------:|
+|[Ray Benefield](https://github.com/RayBenefield) |
+|Solutions Architect |
 
 
 ## License
