@@ -41,3 +41,36 @@ const hasMapName = (data) => {
     - **rememberLongTerm** - Remembers data for user across multiple conversations, must be explicitly forgotten
  - **sayOnError** - Sends a message through the respective channel if there is an error in the observable
  - **say** - Simply sends a message through the respective channel
+
+
+## Bot Configuration Rough Drafting
+
+```js
+import moderator from 'moderator';
+import { Facebook, Twilio, Slack } from 'moderator/channels';
+import { Regex, Luis, ApiAi } from 'moderator/recognizers';
+import { forgetEverything } from 'moderator/basics';
+import rxtify from 'rxtify';
+import { startingAPost, getPlaytestBounties } from './branches';
+
+const Bot = moderator.createBot();
+
+if (argsv.console) {
+    Bot.link(Console);
+}
+
+const server = rxtify.createServerStream();
+
+Bot.link(Facebook(verifyToken, pageAccessToken)).to(server('/facebook'));
+Bot.link(Twilio(apiKey)).to(server('/twilio'));
+Bot.link(Slack(accessToken)).to(server('/slack'));
+
+const smallTalk = ApiAi(agentId, apiKey);
+const haloForging = Luis(appId, subscriptionKey);
+const haloCustoms = Luis(appId2, subscriptionKey2);
+
+Bot.understand.how.to(startAPost).in(haloForging);
+Bot.understand.how.to(getPlaytestBounties).in(haloCustoms);
+Bot.understand.how.to(smallTalk);
+Bot.understand.how.to(forgetEverything);
+```
