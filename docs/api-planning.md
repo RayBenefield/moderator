@@ -74,3 +74,14 @@ Bot.understand.how.to(getPlaytestBounties).in(haloCustoms);
 Bot.understand.how.to(smallTalk);
 Bot.understand.how.to(forgetEverything);
 ```
+
+ - **rxtify** - A restify server that has its endpoints turned into Observables
+ - **Bot** - Does any necessary bootstrapping that may be required
+ - **moderator/channels** - These are messaging channels that are available for interaction
+ - **moderator/recognizers** - These provide a system of analyzing messages to gain the intent and then parse out entities (should intent determination and entity extraction be two different responsibilities?)
+ - **moderator/basics** - These are branches relating directly to moderator, branches that include clearing the session memory, or asking for confirmation, or whatever... it is possible these may be more useful as operators
+ - **Bot.link** - Connect Bot to a particular messaging channel, internally this has the Bot subscribe to the channel, and then subscribes the channel to the Bot, providing an input and output (this may be a use case for an Rx.Subject)
+ - **Facebook/Twilio/Slack** - Channels that require just enough instantiation with whatever the channel needs, it returns an object that can be subscribed to and that can subscribe... possibly returning an Rx.Subject
+ - **ApiAi/Luis/Regex** - These recognizers determine intent, the score of the intents it discovers, and extracting any entities it can based on the intent, they need to be initialized but provide an Observable that can accept a message and then add details to the message
+ - **Bot.understand.how.to()** - This trains the Bot to perform a particular action with a Branch. the `how.to` are just syntactical sugar and could potentially just be `understand(startingAPost)`.
+ - **Bot.understand(branch).in(domain)** - Provides context for the intent, a sort of version of `dialogs` in the Microsoft Bots Framework. Basically the same intent could potentially function differently within a different context. For example, `drying` is different when you are in the context of just having taken a shower vs `drying` when you just painted the house.
