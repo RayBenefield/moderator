@@ -22,7 +22,7 @@
     },
     "scripts": {
         "test": "jest --watch",
-        "lint": "eslint -c .eslintrc src/",
+        "lint": "eslint -c .eslintrc.json src/",
         "build": "babel src -d dist",
         "clean": "rimraf dist",
         "patch": "npm version patch -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
@@ -30,6 +30,7 @@
         "major": "npm version major -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit"
     },
     "dependencies": {
+        "babel-plugin-transform-function-bind": "^6.8.0",
         "config": "^1.21.0",
         "rxjs": "^5.0.0-rc.4",
         "underscore": "^1.8.3",
