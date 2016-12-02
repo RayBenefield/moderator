@@ -16,6 +16,7 @@ const Bot = function() {
     }
 
     this.wakeUp = function() {
+        this.channels[0].subscribe(data => console.log(data));
     }
 };
 
