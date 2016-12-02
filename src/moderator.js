@@ -11,6 +11,11 @@ const Bot = function() {
         return this.skills[skill] = {
             in: (recognizer) => {
                 this.recognizers.push(recognizer);
+                return {
+                    as: (intent) => {
+                        recognizer.addBranch(intent, skill);
+                    },
+                };
             }
         };
     }

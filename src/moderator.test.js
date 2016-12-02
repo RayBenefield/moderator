@@ -6,6 +6,6 @@ const Bot = moderator.createBot();
 Bot.link(new Console());
 
 const sayingHello = message$ => message$.say('Hello World');
-Bot.understand(sayingHello).in(new Passthrough().as('Hello'));;
+Bot.understand(sayingHello).in(new Passthrough()).as('Hello');
 
 Bot.wakeUp();
