@@ -1,7 +1,7 @@
-import { range } from 'rxjs/observable/range';
-import ModeratorObservable from './moderator-observable';
+const moderator = {
+    createBot() {
+        return null;
+    }
+};
 
-const bot = new ModeratorObservable(range(0, 20));
-const source = bot.take(5).say('test');
-
-source.subscribe(x => console.log(x));
+export default moderator;
