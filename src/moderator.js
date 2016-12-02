@@ -14,6 +14,9 @@ const Bot = function() {
             }
         };
     }
+
+    this.wakeUp = function() {
+    }
 };
 
 const moderator = {
