@@ -1,11 +1,14 @@
 const Passthrough = function() {
     this.intents = [];
 
-    this.as = (intent) => ({
-        next: data => console.log(data),
-        error: data => console.log(data),
-        complete: data => console.log(data),
-    });
+    this.next = data => console.log(data);
+    this.error = data => console.log(data);
+    this.complete = data => console.log(data);
+
+    this.as = (intent) => {
+        this.intents.push(intent);
+        return this;
+    };
 };
 
 export { Passthrough };
