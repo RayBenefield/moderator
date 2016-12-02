@@ -1,3 +1,1 @@
-it('should dance', () => {
-    expect('dance').toBeTruthy();
-});
+import moderator from './moderator';
