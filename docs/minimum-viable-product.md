@@ -20,7 +20,7 @@ import { Passthrough } from 'moderator/recognizers';
 const Bot = moderator.createBot();
 Bot.link(Console);
 
-const sayingHello = $message => $message.say('Hello World');
+const sayingHello = message$ => message$.say('Hello World');
 Bot.understand(sayingHello).in(Passhtrough().as('Hello'));
 
 Bot.wakeUp();
