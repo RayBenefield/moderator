@@ -1,6 +1,6 @@
 import moderator from './moderator';
-import { Console } from './moderator/channels';
-import { Passthrough } from './moderator/recognizers';
+import { Console } from './channels';
+import { Passthrough } from './recognizers';
 
 const Bot = moderator.createBot();
 Bot.link(new Console());
