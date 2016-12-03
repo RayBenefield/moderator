@@ -21,7 +21,7 @@ const Bot = moderator.createBot();
 Bot.link(new Console());
 
 const sayingHello = message$ => message$.say('Hello World');
-Bot.understand(sayingHello).in(new Passhtrough().as('Hello'));
+Bot.understand(sayingHello).in(new Passhtrough()).as('Hello');
 
 Bot.wakeUp();
 ```
