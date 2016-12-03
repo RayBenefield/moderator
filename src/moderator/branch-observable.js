@@ -1,21 +1,24 @@
 import { Observable } from 'rxjs';
 
-class ModeratorObservable extends Observable {
+class BranchObservable extends Observable {
     constructor(source) {
         super();
         this.source = source;
+        this.messages = Observable.create(
+            subscriber => (this.subscriber = subscriber)
+        );
     }
 
     lift(operator) {
-        const observable = new ModeratorObservable();
+        const observable = new BranchObservable();
         observable.source = this;
         observable.operator = operator;
         return observable;
     }
 
     say(text) {
-        return this.do(() => console.log(text));
+        return this.do(() => this.subscriber.next(text));
     }
 }
 
-export default ModeratorObservable;
+export default BranchObservable;

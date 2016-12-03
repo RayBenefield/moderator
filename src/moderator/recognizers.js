@@ -1,32 +1,30 @@
+import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import BranchObservable from './branch-observable';
 
-const Passthrough = function() {
+const Passthrough = function Passthrough() {
     this.branches = {};
     this.intents = [
-        'Hello'
+        'Hello',
     ];
 
     this.addBranch = (intent, branch) => {
         const position = this.intents.indexOf(intent);
         if (position >= 0) {
-            this.branches[intent] = branch;
+            const observable = new BranchObservable(of(0));
+            const source = branch(observable);
+            this.branches[intent] = source;
+            return observable.messages;
         }
+        return Observable.emtpy();
     };
 
     this.next = (data) => {
         const position = this.intents.indexOf(data);
         if (position >= 0) {
-            const newBranch = new BranchObservable(of(0));
-            const branch = this.branches[data](newBranch).take(1);
-            branch.subscribe({
-                next: () => console.log('next'),
-                complete: () => console.log('done'),
-            });
+            this.branches[data].subscribe();
         }
     };
-    this.error = data => console.log(data);
-    this.complete = data => console.log(data);
 };
 
 export { Passthrough };
