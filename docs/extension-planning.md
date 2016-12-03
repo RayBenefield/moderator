@@ -3,7 +3,40 @@
 `Moderator` should be able to grow as the market continues to grow. Because chatbots are still in their infancy, the framework needs to be prepared to take on new tools. It needs to be able to keep up with new Messaging Channels, NLP Engines, API Changes, Storage Options, etc.
 
 
-### Recognizers
+## Packaging Plugins/Extensions
+
+Gulp has been such a powerful tool in the community. Something that I like most about gulp is the minimalist aspect to it that follows the Linux tool philosophy. I think there is a lot of power in only including what you need. One of the main problems with that is that eventually there are so many tools that you get lost and have trouble finding the tool you need. But in general I think the way Gulp has gone with tiny packages that do one thing best is the ideal path for this. It will allowus to grow quickly with outside investment that help keeps the project moving forward.
+
+### Scoping
+
+One of the main problems that I have had with gulp is the naming convention. It is a very minor detail, but gulp-\* is very limiting. NPM provides a scopin feature that may be useful moving forward. Depending on its limitations (as I've heard that you can't have a scoped dependency on global packages or something like that). I think a `@moderator` scope would be perfect for this sort of thing.
+
+### Package all the things
+
+Eventually I would also like to split off the channels and recognizers into their own repos. This allows people to only include what they need. Ideally in the future people build branches that are re-usable, or tools that assist in branching.
+
+#### Branches as Packages
+
+For example, I was thinking of the possibility of doing something like:
+
+```js
+(branches$, messages$) => branches$
+    .askUntil(
+        messages$.filter(isValid),
+        isFrustrated$,
+    )
+    .split(
+        validBranch$,
+        frustratedBranch$,
+    )
+```
+
+`isFrustrated` is a separate stream, and the first one to get in to `.askUntil()` (a valid message or frustration sets in) is the decider of how the branch splits into different branches. Just an initial thought. That separate stream could be a package that people can pull down. I'm also considering the power of "rephrasing" packages, things that can morph what you are intending to say to introduce variety into conversational flow.
+
+Including stream packages would be valuable in terms of a lot of different instances. We can look to the RxJS community and how things like DOM events have made programming much more expressive. For example, something like a `confirmation$` stream that determines when someone says yes, no, or ask me later or something. Similar to how UI engineers use a click stream to control the flow of another stream. So `askUntil(confirmation$)` would be very handy and declarative.
+
+
+## Recognizers
 
 Recognizers are responsible for parsing out the meaning of the messages that come into the moderator. They analyze for the intent of the message (and the probably of that intent), the entities that can be extracted from the message, and any other details that can be garnered from it.
 
@@ -13,12 +46,12 @@ Recognizers are responsible for parsing out the meaning of the messages that com
  - **String** - Analyzes based on the raw string and the difference between the given string and anticipated strings to get a score
  - **Command** - Expects a syntax structure to the message similar to a commandline command pattern with flags and arguments; pretty much a starting use case for ChatOps
 
-#### Additional considerations
+### Additional considerations
 
 I've noticed most NLP engines ownly recognize based on a string, it is possible that intent, entity extraction, and scoring can be influenced by more complex parts of a message. For example, an email can communicate a Subject, Description, and Attachments. You can also send your location from Messenger, or send files through SMS, etc. There may be a lot of growth in the recognition space. We should keep this in mind moving forward.
 
 
-### Channels
+## Channels
 
 Channels are responsible for accepting messages from a source and then converting the messages into a standardize format based on all of the information in the message. This could be extremely complex (Facebook can send a lot of data) or be very simple (the Console is just a string). In addition they are also in charge of massaging messages back into a format for the receiving channel, turning the Bot's output into something that can be communicated through the channel. This may be difficult for some channels as channels could support cards, or buttons, or any number of things. There may also have to be sacrifices in communication depending on the channel. For example, the Console and SMS Channels only really accept text and display cards as a unique output doing fun rendering like adding separators or punctuation.
 
