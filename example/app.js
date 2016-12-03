@@ -1,6 +1,8 @@
-import moderator from './moderator';
-import { Console } from './channels';
-import { Passthrough } from './recognizers';
+/* eslint-disable import/no-extraneous-dependencies */
+
+import moderator from 'moderator';
+import { Console } from 'moderator/channels';
+import { Passthrough } from 'moderator/recognizers';
 
 const Bot = moderator.createBot();
 Bot.link(new Console());
