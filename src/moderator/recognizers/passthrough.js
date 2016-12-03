@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
-import BranchObservable from './branch-observable';
+import BranchObservable from '../branch-observable';
 
 const Passthrough = function Passthrough() {
     this.branches = {};
@@ -27,4 +27,4 @@ const Passthrough = function Passthrough() {
     };
 };
 
-export { Passthrough };
+export default Passthrough;
