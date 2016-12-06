@@ -1,3 +1,11 @@
+<p align="center">
+    <a href="https://github.com/RayBenefield/moderator">
+        <img src="images/logo-250.png" alt="Moderator"/>
+    </a>
+    <br />
+    <sub><em>Logo courtesy of <a href="https://www.linkedin.com/in/ACoAABSukNQBFG3qSrL7DzoXFWf0lDJ70g6Yy-w/">Carson Barry</a></em></sub>
+</p>
+
 # Moderator
 
 Chatbots are a fast growing market and the technology behind them is still in their infancy. Moderator seeks to add to the expanding toolsets that exist for building chatbots by providing a declarative framework that makes reasoning a chatbot's conversational skills that much easier.
