@@ -15,7 +15,7 @@
         "url": "https://github.com/RayBenefield/moderator/issues"
     },
     "license": "MIT",
-    "main": "src/moderator.js",
+    "main": "index.js",
     "engines": {
         "node": ">= 0.10.26",
         "npm": ">=1.4.3"
@@ -29,7 +29,7 @@
         "patch": "npm version patch -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "minor": "npm version minor -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "major": "npm version major -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
-        "postinstall": "node -e \"var s='../src',d='node_modules/moderator',fs=require('fs');fs.exists(d,function(e){e||fs.symlinkSync(s,d,'dir')});\""
+        "dist": "npm run build && cp package.json dist/ && cd dist && npm publish"
     },
     "dependencies": {
         "babel-plugin-transform-function-bind": "^6.8.0",
