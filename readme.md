@@ -34,7 +34,7 @@ npm i -S moderator
 
 ## Usage
 
-See the [`examples/`](./example/) directory for how everything ties together.
+See the [`examples/`](./examples/) directory for how everything ties together.
 
 
 ## Documentation
