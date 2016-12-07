@@ -29,7 +29,7 @@
         "patch": "npm version patch -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "minor": "npm version minor -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
         "major": "npm version major -m 'v%s' && js-beautify -r package.json && git commit -a --amend --no-edit",
-        "dist": "npm run build && cp package.json dist/ && cd dist && npm publish"
+        "dist": "rimraf dist/ && npm run build && cp package.json readme.md dist/ && mkdir -p dist/images && cp images/logo.svg dist/images/logo.svg && cd dist && npm publish"
     },
     "dependencies": {
         "babel-plugin-transform-function-bind": "^6.8.0",
