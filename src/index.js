@@ -32,4 +32,4 @@ const moderator = {
     },
 };
 
-export default moderator;
+export default module.exports = moderator;

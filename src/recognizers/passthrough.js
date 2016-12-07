@@ -27,4 +27,4 @@ const Passthrough = function Passthrough() {
     };
 };
 
-export default Passthrough;
+export default module.exports = Passthrough;

@@ -22,4 +22,4 @@ const Console = function Console() {
     );
 };
 
-export default Console;
+export default module.exports = Console;

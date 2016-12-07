@@ -21,4 +21,4 @@ class BranchObservable extends Observable {
     }
 }
 
-export default BranchObservable;
+export default module.exports = BranchObservable;
