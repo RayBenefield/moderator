@@ -1,7 +1,7 @@
 {
     "name": "moderator",
     "description": "An assistant in the building of declarative chatbots.",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "homepage": "https://github.com/RayBenefield/moderator",
     "author": {
         "name": "Raymond Benefield",
