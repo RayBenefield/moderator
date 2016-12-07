@@ -1,21 +1,61 @@
 ## Step-by-step
 
-Getting started with `moderator` is extremely simple. Below is how we get a Hello World application working on the terminal.
+Getting started with `moderator` is extremely simple. Below is how we get a Hello World application working on the terminal. I've provided both ES5 and ES6 setups for convenience.
 
 ### Step #1
 
 Install `moderator` using **one** the following:
 
+
+#### ES5
+
 ```
-yarn add moderator babel-cli
-npm install moderator babel-cli --save
-npm i moderator babel-cli -S
+yarn add moderator
+npm install moderator --save
+npm i moderator -S
+```
+
+#### ES6
+
+```
+yarn add moderator babel-cli babel-preset-es2015
+npm install moderator babel-cli babel-preset-es2015 --save
+npm i moderator babel-cli babel-preset-es2015 -S
 ```
 
 
 ### Step #2
 
 Type or copy/paste the code below in your `index.js` file at the project root:
+
+
+#### ES5
+
+```js
+var moderator = require('moderator');
+var { Console } = require('moderator/channels');
+var { Passthrough } = require('moderator/recognizers');
+
+var Bot = moderator.createBot();
+Bot.link(new Console());
+
+var sayingHello = function(message$) {
+    return message$.say('Hello World');
+};
+Bot.understand(sayingHello).in(new Passthrough()).as('Hello');
+
+Bot.wakeUp();
+```
+
+
+#### ES6
+
+```js
+// .babelrc
+{
+    "presets": ["es2015"]
+}
+```
 
 ```js
 // index.js
@@ -27,7 +67,7 @@ const Bot = moderator.createBot();
 Bot.link(new Console());
 
 const sayingHello = message$ => message$.say('Hello World');
-Bot.understand(sayingHello).in(new Passhtrough()).as('Hello');
+Bot.understand(sayingHello).in(new Passthrough()).as('Hello');
 
 Bot.wakeUp();
 ```
@@ -36,6 +76,16 @@ Bot.wakeUp();
 ### Step #3
 
 Run the following command from the project root:
+
+
+#### ES5
+
+```
+node ./index.js
+```
+
+
+#### ES6
 
 ```
 babel-node ./index.js
@@ -52,7 +102,7 @@ You should be in a command prompt waiting for input. Type `Hello` (case sensitiv
 
 ## Explanation
 
-So what does all that code mean? Let's parse it out line by line (or group of lines).
+So what does all that code mean? Let's parse it out line by line (or group of lines). Explanations are only in ES6 to avoid verbosity.
 
 ```js
 import moderator from 'moderator';
